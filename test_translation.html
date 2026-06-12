@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Translation Test</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .test { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; font-weight: bold; }
+        button.active { background-color: #10b981; color: white; }
+    </style>
+</head>
+<body>
+<h1>Translation System Test</h1>
+
+<div>
+    <button onclick="setLanguage('ro')" class="active">RO</button>
+    <button onclick="setLanguage('ru')">RU</button>
+    <button onclick="setLanguage('en')">EN</button>
+</div>
+
+<div class="test">
+    <p>Current Language: <strong id="curLang">ro</strong></p>
+    <p>test.home = <span id="testHome" data-i18n="nav_home">Acasă</span></p>
+    <p>test.about = <span id="testAbout" data-i18n="about_title">Povestea Slim Studio</span></p>
+</div>
+
+<script>
+var currentLanguage = 'ro';
+var translations = {
+    ro: {
+        nav_home: 'Acasă',
+        about_title: 'Povestea Slim Studio',
+        calc_title: 'Calculatoare fitness',
+        team_title: 'Specialistele noastre',
+        pricing_title: 'Planuri și Tarife'
+    },
+    ru: {
+        nav_home: 'Главная',
+        about_title: 'История Slim Studio',
+        calc_title: 'Фитнес-калькуляторы',
+        team_title: 'Наша команда',
+        pricing_title: 'Планы и Тарифы'
+    },
+    en: {
+        nav_home: 'Home',
+        about_title: 'Slim Studio Story',
+        calc_title: 'Fitness Calculators',
+        team_title: 'Our Team',
+        pricing_title: 'Plans & Pricing'
+    }
+};
+
+function setLanguage(lang) {
+    currentLanguage = lang;
+    document.getElementById('curLang').textContent = lang.toUpperCase();
+    updateLanguage();
+
+    // Highlight active button
+    document.querySelectorAll('button').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent === lang.toUpperCase()) {
+            btn.classList.add('active');
+        }
+    });
+}
+
+function updateLanguage() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        var key = el.getAttribute('data-i18n');
+        if (translations[currentLanguage] && translations[currentLanguage][key]) {
+            el.textContent = translations[currentLanguage][key];
+        }
+    });
+}
+
+// Initial call
+window.addEventListener('load', function() {
+    updateLanguage();
+});
+</script>
+
+</body>
+</html>

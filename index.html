@@ -1,0 +1,1172 @@
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+/* Typography System - Modern Geometric */
+--font-heading:'Sora','Poppins','Montserrat',sans-serif;
+--font-body:'Inter','Open Sans',sans-serif;
+--font-accent:'Poppins',sans-serif;
+/* Dark Luxury Base */
+--bg-dark:#0B0D10;
+--bg-surface:#151922;
+--bg-card:#1C212C;
+--bg-hover:#252A35;
+/* Premium Text */
+--text:#FFFFFF;
+--text-secondary:#C9CAD0;
+--text-muted:#8A8E99;
+/* Premium Accent Colors - Gold Muted & Luxury System */
+--accent-primary:#C8A24A;
+--accent-secondary:#7EE0C3;
+--accent-light:#E8D5B1;
+--success:#5B8A72;
+--danger:#EF4444;
+/* Legacy compatibility */
+--ivory:#F8F4EE;
+--champagne:#E8D8C4;
+--muted:#8A8E99;
+--white:#FFFFFF;
+/* Visual Hierarchy - Soft Realistic Shadows */
+--shadow-sm:0 4px 12px rgba(0,0,0,0.25);
+--shadow-md:0 12px 32px rgba(0,0,0,0.35);
+--shadow-lg:0 20px 48px rgba(0,0,0,0.4);
+--shadow-xl:0 32px 64px rgba(0,0,0,0.45);
+/* Spacing System */
+--spacing-xs:4px;
+--spacing-sm:8px;
+--spacing-md:16px;
+--spacing-lg:24px;
+--spacing-xl:32px;
+}
+
+/* ANIMATIONS - Premium Motion Design */
+@keyframes slideUpIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes blurIn{from{opacity:0;filter:blur(10px)}to{opacity:1;filter:blur(0)}}
+@keyframes scaleHover{from{transform:scale(1)}to{transform:scale(1.05)}}
+@keyframes glowHover{from{box-shadow:var(--shadow-sm)}to{box-shadow:var(--shadow-xl)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.8}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+
+/* Scroll Reveal Animation - Applied to content sections */
+.scroll-reveal{opacity:0;animation:slideUpIn 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards}
+.scroll-reveal.visible{opacity:1}
+
+/* Stagger animation for grid items */
+.scroll-reveal:nth-child(1){animation-delay:0s}
+.scroll-reveal:nth-child(2){animation-delay:0.15s}
+.scroll-reveal:nth-child(3){animation-delay:0.3s}
+.scroll-reveal:nth-child(4){animation-delay:0.45s}
+.scroll-reveal:nth-child(5){animation-delay:0.6s}
+.scroll-reveal:nth-child(6){animation-delay:0.75s}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;backdrop-filter:blur(12px);background:rgba(11,13,16,0.85);border-bottom:1px solid rgba(200,162,74,0.15);position:sticky;top:0;z-index:100;box-shadow:0 8px 32px rgba(0,0,0,0.1)}
+.nav-logo{font-family:var(--font-heading);font-size:24px;font-weight:700;letter-spacing:2px;color:var(--text)}
+.nav-logo small{display:block;font-size:9px;letter-spacing:3px;color:var(--muted);font-weight:400;margin-top:2px}
+.nav-links{display:flex;gap:32px}
+.nav-link{font-family:var(--font-body);font-size:13px;color:var(--muted);cursor:pointer;padding:8px 0;border-bottom:2px solid transparent;text-decoration:none;transition:all 0.3s ease;font-weight:500}
+.nav-link:hover{color:var(--accent-primary);border-bottom-color:var(--accent-primary)}
+.nav-cta{background:var(--accent-primary);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-family:var(--font-accent);font-size:13px;cursor:pointer;font-weight:600;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(200,162,74,0.3);letter-spacing:0.5px}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,185,129,0.4)}
+
+.sec{padding:80px 48px}
+.sec-alt{background:var(--bg-surface)}
+.sec-title{font-family:var(--font-heading);text-align:center;font-size:48px;font-weight:700;margin-bottom:12px;color:var(--text);letter-spacing:-0.5px}
+.sec-sub{text-align:center;font-size:16px;color:var(--muted);margin-bottom:48px;font-family:var(--font-body);font-weight:400;letter-spacing:0.3px}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:100px 48px;max-width:1400px;margin:0 auto;background:linear-gradient(135deg,var(--bg-dark) 0%,var(--bg-surface) 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;right:0;width:500px;height:500px;background:radial-gradient(circle,rgba(200,162,74,0.1) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-content{display:flex;flex-direction:column;gap:20px}
+.hero-badge{display:inline-block;background:rgba(200,162,74,0.1);border:1px solid var(--accent-primary);color:var(--accent-primary);font-size:10px;letter-spacing:1.5px;padding:10px 20px;border-radius:24px;align-self:flex-start;font-weight:700;text-transform:uppercase;font-family:var(--font-accent)}
+.hero h1{font-family:var(--font-heading);font-size:56px;font-weight:700;color:var(--text);line-height:1.15;margin-bottom:8px;max-width:500px;letter-spacing:-1px}
+.hero h1 em{font-style:normal;color:var(--accent-primary);position:relative}
+.hero-p{font-family:var(--font-body);font-size:16px;color:var(--text-secondary);max-width:480px;line-height:1.8;font-weight:400;margin:0}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
+.btn-p{background:var(--accent-primary);color:var(--white);border:none;padding:14px 36px;border-radius:8px;font-family:var(--font-accent);font-size:14px;cursor:pointer;font-weight:600;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);box-shadow:var(--shadow-md);letter-spacing:0.5px;will-change:transform,box-shadow;text-transform:capitalize}
+.btn-p:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 16px 40px rgba(200,162,74,0.3)}
+.btn-s{background:transparent;color:var(--accent-primary);border:2px solid var(--accent-primary);padding:12px 36px;border-radius:8px;font-family:var(--font-accent);font-size:14px;cursor:pointer;font-weight:600;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);will-change:all;text-transform:capitalize}
+.btn-s:hover{background:var(--accent-primary);color:var(--white);transform:scale(1.02)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1)}
+.hero-stat strong{display:block;font-family:var(--font-accent);font-size:32px;font-weight:700;color:var(--accent-primary);margin-bottom:8px;letter-spacing:-0.5px}
+.hero-stat span{font-family:var(--font-body);font-size:11px;color:var(--text-muted);letter-spacing:1px;font-weight:500;text-transform:uppercase}
+.hero-visual{grid-column:2;height:500px;background:linear-gradient(135deg,rgba(200,162,74,0.1) 0%,rgba(126,224,195,0.1) 100%);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:120px}
+
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:24px;max-width:1000px;margin:0 auto}
+.card{background:var(--bg-card);border:1px solid rgba(16,185,129,0.2);border-radius:24px;padding:32px;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);box-shadow:var(--shadow-sm);will-change:transform,box-shadow}
+.card:hover{transform:translateY(-12px) scale(1.02);border-color:var(--accent-primary);box-shadow:0 20px 48px rgba(200,162,74,0.2)}
+
+.svc-icon{width:56px;height:56px;background:rgba(16,185,129,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:28px;transition:all 0.3s ease}
+.svc-card:hover .svc-icon{background:var(--accent-primary);transform:scale(1.1)}
+.svc-card h3{font-family:var(--font-heading);font-size:18px;font-weight:700;margin-bottom:12px;color:var(--text)}
+.svc-card p{font-size:14px;color:var(--muted);line-height:1.7}
+.svc-price{margin-top:16px;font-family:var(--font-accent);font-size:13px;font-weight:700;color:var(--accent-primary);letter-spacing:0.5px}
+
+.t-stars{color:var(--accent-primary);font-size:14px;margin-bottom:12px;letter-spacing:1px}
+.t-text{font-family:var(--font-body);font-size:15px;color:var(--text);line-height:1.8;margin-bottom:18px;font-style:italic;font-weight:400}
+.t-author{display:flex;align-items:center;gap:12px}
+.avatar{width:42px;height:42px;border-radius:50%;background:var(--accent-primary);display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;color:var(--white);flex-shrink:0;box-shadow:var(--shadow-sm)}
+.t-name{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--text)}
+.t-result{font-size:12px;color:var(--accent-primary);letter-spacing:0.3px;font-weight:500}
+
+.ba-card{border:1px solid rgba(16,185,129,0.15);border-radius:20px;overflow:hidden;background:var(--bg-card);box-shadow:var(--shadow-sm);transition:all 0.3s ease}
+.ba-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.ba-imgs{display:grid;grid-template-columns:1fr 1fr}
+.ba-img{height:140px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;font-size:11px;font-weight:500}
+.ba-before{background:#2a2a2a;color:var(--muted)}
+.ba-after{background:rgba(91,138,114,0.1);color:var(--success)}
+.ba-info{padding:20px}
+.ba-name{font-family:var(--font-heading);font-size:14px;font-weight:700;color:var(--text)}
+.ba-res{font-size:12px;color:var(--accent-primary);margin-top:4px;font-weight:600}
+.ba-time{font-size:11px;color:var(--muted);margin-top:4px}
+
+.faq-item{border-bottom:1px solid rgba(16,185,129,0.1)}
+.faq-q{padding:20px 0;font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--text);transition:all 0.3s ease}
+.faq-q:hover{color:var(--accent-primary)}
+.faq-a{padding-bottom:20px;font-family:var(--font-body);font-size:14px;color:var(--muted);line-height:1.8;display:none;font-weight:400}
+.faq-a.open{display:block}
+
+.form-wrap{max-width:620px;margin:0 auto;background:var(--bg-card);border:1px solid rgba(16,185,129,0.2);border-radius:20px;padding:40px;box-shadow:var(--shadow-md)}
+.form-title{font-family:var(--font-heading);font-size:26px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:28px;font-family:var(--font-body)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-family:var(--font-accent);font-size:12px;color:var(--text);margin-bottom:6px;font-weight:700;letter-spacing:0.3px;text-transform:capitalize}
+.fg input,.fg select,.fg textarea{width:100%;padding:12px 14px;font-family:var(--font-body);font-size:14px;border:1px solid rgba(16,185,129,0.2);border-radius:8px;background:var(--bg-surface);color:var(--text);transition:all 0.3s ease}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--muted)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--accent-primary);box-shadow:0 0 0 3px rgba(16,185,129,0.1)}
+.ferr{font-size:12px;color:#C41E3A;margin-top:4px;display:none;font-weight:500;font-family:var(--font-body)}
+.ferr.show{display:block}
+.f-submit{width:100%;background:var(--accent-primary);color:var(--white);border:none;padding:14px;border-radius:8px;font-family:var(--font-accent);font-size:14px;font-weight:600;cursor:pointer;margin-top:12px;transition:all 0.3s ease;letter-spacing:0.5px;box-shadow:var(--shadow-md);text-transform:capitalize}
+.f-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.f-submit:disabled{opacity:0.6;cursor:not-allowed}
+.consent-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:16px}
+.consent-row input{width:18px;height:18px;border:1px solid rgba(16,185,129,0.3);border-radius:4px;cursor:pointer;accent-color:var(--accent-primary)}
+.consent-row span{font-size:12px;color:var(--muted);line-height:1.6;font-family:var(--font-body)}
+.consent-row a{color:var(--accent-primary);text-decoration:none;font-weight:600}
+.f-success{text-align:center;padding:40px;display:none}
+.f-success.show{display:block}
+
+.booking-wrap{max-width:620px;margin:0 auto}
+.slots-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:24px 0}
+.slot{border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:14px;text-align:center;cursor:pointer;transition:all 0.3s ease;background:var(--bg-surface);box-shadow:var(--shadow-sm)}
+.slot:hover:not(.full){border-color:var(--accent-primary);background:rgba(16,185,129,0.05)}
+.slot.selected{border-color:var(--accent-primary);background:rgba(16,185,129,0.1)}
+.slot.full{opacity:0.4;cursor:not-allowed}
+.slot-date{font-family:var(--font-accent);font-size:13px;font-weight:700;color:var(--text)}
+.slot-time{font-size:12px;color:var(--muted);margin-top:4px}
+.slot-avail{font-family:var(--font-accent);font-size:11px;margin-top:6px;font-weight:700;letter-spacing:0.5px}
+.avail-ok{color:var(--success)}.avail-few{color:#D97706}.avail-none{color:#C41E3A}
+.time-pill{border:1px solid rgba(16,185,129,0.2);border-radius:8px;padding:10px 18px;cursor:pointer;font-family:var(--font-accent);font-size:13px;display:inline-block;transition:all 0.3s ease;background:var(--bg-surface);margin:4px;font-weight:600}
+.time-pill:hover{border-color:var(--accent-primary);background:rgba(16,185,129,0.05)}
+.time-pill.sel{border-color:var(--accent-primary);background:var(--accent-primary);color:var(--white);font-weight:600}
+.book-confirm{background:rgba(91,138,114,0.15);border:1px solid var(--success);border-radius:12px;padding:18px;margin-top:20px;display:none}
+.book-confirm.show{display:block}
+
+.calc-tabs{display:flex;gap:12px;margin-bottom:28px;justify-content:center}
+.ctab{padding:10px 20px;border-radius:8px;border:1px solid rgba(16,185,129,0.2);font-family:var(--font-accent);font-size:13px;cursor:pointer;color:var(--muted);background:transparent;transition:all 0.3s ease;font-weight:700}
+.ctab:hover{border-color:var(--accent-primary);color:var(--accent-primary)}
+.ctab.active{background:var(--accent-primary);color:var(--white);border-color:var(--accent-primary)}
+.calc-block{display:none;max-width:540px;margin:0 auto}
+.calc-block.active{display:block;animation:fadeIn 0.3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.calc-result{background:linear-gradient(135deg,rgba(16,185,129,0.08) 0%,rgba(16,185,129,0.05) 100%);border:1px solid rgba(16,185,129,0.25);border-radius:16px;padding:28px;text-align:center;margin-top:20px}
+.calc-val{font-family:var(--font-accent);font-size:48px;font-weight:700;color:var(--accent-primary);letter-spacing:-0.5px}
+.calc-label{font-size:12px;color:var(--muted);margin-top:6px;font-family:var(--font-body);font-weight:500;letter-spacing:0.5px}
+.calc-interp{font-family:var(--font-accent);font-size:14px;font-weight:700;margin-top:8px}
+.calc-interp{color:var(--success)}
+
+.quiz-prog{height:6px;background:rgba(16,185,129,0.1);border-radius:3px;margin-bottom:28px;overflow:hidden}
+.quiz-prog-bar{height:6px;background:var(--accent-primary);border-radius:3px;transition:width 0.4s ease}
+.quiz-step{display:none;max-width:560px;margin:0 auto;animation:slideUp 0.3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.quiz-step.active{display:block}
+.quiz-q{font-family:var(--font-heading);font-size:32px;font-weight:700;margin-bottom:12px;color:var(--text);letter-spacing:-0.5px}
+.quiz-sub{font-family:var(--font-body);font-size:15px;color:var(--muted);margin-bottom:24px;font-weight:400}
+.quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qopt{border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:16px;cursor:pointer;font-family:var(--font-accent);font-size:14px;text-align:center;transition:all 0.3s ease;background:var(--bg-surface);font-weight:600;box-shadow:var(--shadow-sm)}
+.qopt:hover{border-color:var(--accent-primary);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.qopt.sel{border-color:var(--accent-primary);background:var(--accent-primary);color:var(--white);font-weight:600}
+.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:12px}
+.qnext{background:var(--accent-primary);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-family:var(--font-accent);font-size:14px;cursor:pointer;font-weight:600;transition:all 0.3s ease;letter-spacing:0.5px;box-shadow:var(--shadow-md);text-transform:capitalize}
+.qnext:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.qback{background:transparent;color:var(--muted);border:1px solid rgba(16,185,129,0.2);padding:12px 28px;border-radius:8px;font-family:var(--font-accent);font-size:14px;cursor:pointer;font-weight:600;transition:all 0.3s ease;text-transform:capitalize}
+.qback:hover{border-color:var(--accent-primary);color:var(--accent-primary)}
+
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.blog-card{border:1px solid rgba(16,185,129,0.15);border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.3s ease;background:var(--bg-card);box-shadow:var(--shadow-sm)}
+.blog-card:hover{transform:translateY(-8px);border-color:var(--accent-primary);box-shadow:var(--shadow-md)}
+.blog-img{height:160px;background:linear-gradient(135deg,rgba(16,185,129,0.08) 0%,rgba(16,185,129,0.05) 100%);display:flex;align-items:center;justify-content:center;font-size:48px;transition:all 0.3s ease}
+.blog-card:hover .blog-img{background:linear-gradient(135deg,rgba(16,185,129,0.12) 0%,rgba(16,185,129,0.08) 100%)}
+.blog-body{padding:20px}
+.blog-tag{font-family:var(--font-accent);font-size:10px;letter-spacing:1px;color:var(--accent-primary);font-weight:700;text-transform:uppercase;margin-bottom:8px;display:inline-block}
+.blog-card h3{font-family:var(--font-heading);font-size:16px;font-weight:700;line-height:1.5;margin-bottom:10px;color:var(--text)}
+.blog-card p{font-family:var(--font-body);font-size:14px;color:var(--muted);line-height:1.7;font-weight:400}
+.blog-date{font-family:var(--font-body);font-size:11px;color:var(--muted);margin-top:12px;font-weight:500;letter-spacing:0.3px}
+
+.dash-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:28px}
+.metric{background:linear-gradient(135deg,rgba(16,185,129,0.08) 0%,rgba(16,185,129,0.05) 100%);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:20px;transition:all 0.3s ease}
+.metric:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.metric-val{font-family:var(--font-accent);font-size:36px;font-weight:700;color:var(--accent-primary);letter-spacing:-0.5px}
+.metric-label{font-family:var(--font-body);font-size:12px;color:var(--muted);margin-top:6px;font-weight:500;letter-spacing:0.3px}
+.metric-up{font-family:var(--font-accent);font-size:11px;color:var(--success);margin-top:6px;font-weight:700}
+.crm-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.fbtn{padding:8px 16px;border-radius:20px;font-family:var(--font-accent);font-size:12px;cursor:pointer;border:1px solid rgba(16,185,129,0.2);color:var(--muted);background:transparent;transition:all 0.3s ease;font-weight:700}
+.fbtn:hover{border-color:var(--accent-primary);color:var(--accent-primary)}
+.fbtn.active{background:var(--accent-primary);color:var(--white);border-color:var(--accent-primary)}
+.srch{flex:1;min-width:180px;padding:10px 14px;border:1px solid rgba(16,185,129,0.2);border-radius:8px;font-family:var(--font-body);font-size:13px;background:var(--bg-surface);color:var(--text);transition:all 0.3s ease}
+.srch:focus{outline:none;border-color:var(--accent-primary);box-shadow:0 0 0 3px rgba(16,185,129,0.1)}
+.srch::placeholder{color:var(--muted)}
+.leads-table{width:100%;border-collapse:collapse;font-family:var(--font-body);font-size:13px;table-layout:fixed}
+.leads-table th{text-align:left;padding:12px 14px;font-size:11px;font-weight:700;color:var(--text);border-bottom:1px solid rgba(16,185,129,0.15);background:rgba(16,185,129,0.1);letter-spacing:0.3px;text-transform:uppercase;font-family:var(--font-accent)}
+.leads-table td{padding:12px 14px;border-bottom:1px solid rgba(16,185,129,0.1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.leads-table tr:hover td{background:rgba(16,185,129,0.1)}
+.sbadge{padding:4px 10px;border-radius:20px;font-family:var(--font-accent);font-size:11px;font-weight:700;display:inline-block;text-align:center;letter-spacing:0.3px}
+.s-new{background:rgba(24,95,165,0.1);color:#185FA5}.s-contacted{background:rgba(250,238,218,0.6);color:#854F0B}
+.s-scheduled{background:rgba(83,74,183,0.1);color:#534AB7}.s-active{background:rgba(91,138,114,0.1);color:#3B6D11}.s-done{background:rgba(95,94,90,0.1);color:#5F5E5A}
+.act-btn{padding:6px 10px;font-family:'Poppins',sans-serif;font-size:11px;border:1px solid rgba(16,185,129,0.2);border-radius:6px;cursor:pointer;color:var(--muted);background:transparent;margin-right:4px;transition:all 0.3s ease;font-weight:600}
+.act-btn:hover{border-color:var(--accent-primary);color:var(--accent-primary);background:rgba(16,185,129,0.05)}
+.expbtn{background:transparent;border:1px solid rgba(16,185,129,0.2);color:var(--muted);padding:8px 16px;border-radius:8px;font-family:'Poppins',sans-serif;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all 0.3s ease;font-weight:600}
+.expbtn:hover{border-color:var(--accent-primary);color:var(--accent-primary)}
+
+.tg-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;justify-content:center}
+.tg-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;background:rgba(24,95,165,0.1);color:#185FA5;letter-spacing:0.3px}
+
+.section-divider{text-align:center;padding:48px 48px 0;font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;border-top:1px solid rgba(16,185,129,0.15);font-weight:600}
+
+.toast{position:fixed;bottom:32px;right:32px;background:var(--text);color:var(--white);padding:14px 24px;border-radius:8px;font-family:'Poppins',sans-serif;font-size:13px;opacity:0;transition:opacity 0.3s ease;pointer-events:none;z-index:999;box-shadow:var(--shadow-lg);font-weight:500;letter-spacing:0.3px}
+.toast.show{opacity:1;pointer-events:auto}
+.expert-card h3{font-family:var(--font-heading);font-size:20px;font-weight:700;color:var(--text)}
+.expert-card p{font-size:13px;color:var(--muted);line-height:1.7;font-family:var(--font-body)}
+.pricing-card{text-align:center}
+.pricing-card h3{font-family:var(--font-heading);font-size:22px;font-weight:700;color:var(--text);margin-bottom:8px}
+
+/* Professional Photo & Specialist System */
+.specialist-section{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;max-width:1200px;margin:0 auto}
+.specialist-card{background:var(--bg-card);border:1px solid rgba(16,185,129,0.2);border-radius:24px;overflow:hidden;transition:all 0.3s ease;box-shadow:var(--shadow-md)}
+.specialist-card:hover{transform:translateY(-12px);border-color:var(--accent-primary);box-shadow:var(--shadow-xl)}
+.specialist-photo{width:100%;height:360px;background:linear-gradient(135deg,rgba(16,185,129,0.1) 0%,rgba(16,185,129,0.08) 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.specialist-photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s ease}
+.specialist-card:hover .specialist-photo img{transform:scale(1.05)}
+.specialist-info{padding:32px}
+.specialist-name{font-family:var(--font-heading);font-size:24px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-0.5px}
+.specialist-title{font-family:var(--font-accent);font-size:12px;color:var(--accent-primary);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.specialist-bio{font-family:var(--font-body);font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:20px}
+.specialist-certs{list-style:none;margin:20px 0;padding:16px 0;border-top:1px solid rgba(16,185,129,0.15);border-bottom:1px solid rgba(16,185,129,0.15)}
+.specialist-certs li{font-size:13px;color:var(--text);margin:8px 0;padding-left:24px;position:relative}
+.specialist-certs li:before{content:'✓';position:absolute;left:0;color:var(--accent-primary);font-weight:700}
+.specialist-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;padding:20px 0;border-top:1px solid rgba(16,185,129,0.15)}
+.specialist-stat-value{font-family:var(--font-accent);font-size:32px;font-weight:700;color:var(--accent-primary);letter-spacing:-0.5px}
+.specialist-stat-label{font-size:12px;color:var(--text-muted);margin-top:4px}
+.specialist-btn{width:100%;background:var(--accent-primary);color:var(--white);border:none;padding:14px;border-radius:8px;font-family:var(--font-accent);font-size:14px;cursor:pointer;font-weight:600;transition:all 0.3s ease;box-shadow:var(--shadow-md);margin-top:16px;text-transform:capitalize}
+.specialist-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+@media(max-width:768px){
+.nav{padding:16px 24px}
+.sec{padding:60px 24px}
+.hero{grid-template-columns:1fr;gap:32px;padding:80px 24px 60px;max-width:100%}
+.hero-visual{grid-column:1;height:300px}
+.grid3{gap:16px}
+.hero h1{font-size:42px}
+.hero-stats{grid-template-columns:repeat(3,1fr);gap:16px}
+.sec-title{font-size:36px}
+.nav-links{gap:16px;font-size:12px}
+}
+</style>
+
+<nav class="nav">
+  <div class="nav-logo">SLIM<small>STUDIO</small></div>
+  <div class="nav-links">
+    <a class="nav-link" href="#hero" onclick="sc('hero')">Acasă</a>
+    <a class="nav-link" href="#services" onclick="sc('services')">Servicii</a>
+    <a class="nav-link" href="#team" onclick="sc('team')">Echipa</a>
+    <a class="nav-link" href="#pricing" onclick="sc('pricing')">Prețuri</a>
+    <a class="nav-link" href="#quiz" onclick="sc('quiz')">Quiz</a>
+    <a class="nav-link" href="#contact" onclick="sc('contact')">Contact</a>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center">
+    <button class="nav-cta" onclick="sc('contact')">Înscrie-te</button>
+  </div>
+</nav>
+
+<section id="hero" class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">LADY FITNESS · CHIȘINĂU</div>
+    <h1>Transformă-ți corpul cu Slim Studio</h1>
+    <p class="hero-p">Antrenamente personalizate pentru femei. Nutriție, fitness și consultații — totul într-un singur loc.</p>
+    <div class="hero-btns">
+      <button class="btn-p" onclick="sc('contact')">Înscrie-te gratuit</button>
+      <button class="btn-s" onclick="sc('booking')">Programează consultație</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>340+</strong><span>Cliente active</span></div>
+      <div class="hero-stat"><strong>4.9 ★</strong><span>Recenzii</span></div>
+      <div class="hero-stat"><strong>3 ani</strong><span>Experiență</span></div>
+    </div>
+  </div>
+  <div class="hero-visual"><img src="img/alexia_gym_hero_resaved.png" alt="Professional Fitness Studio Interior" style="width:100%;height:100%;object-fit:cover;border-radius:24px;"></img></div>
+</section>
+
+<div class="section-divider">Despre Mine</div>
+<section class="sec">
+  <div class="sec-title">Povestea Slim Studio</div>
+  <div class="sec-sub">De la transformare personală la misiune</div>
+  <div class="grid2" style="max-width:900px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <img src="img/coach-1.jpg" alt="Ana-Maria Ciobanu - Founder" style="width:100%;height:360px;object-fit:cover;border-radius:16px;box-shadow:0 12px 32px rgba(0,0,0,0.35);">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div>
+        <h3 style="font-family:var(--font-heading);font-size:22px;font-weight:700;color:var(--text);margin-bottom:12px">Ana-Maria Ciobanu</h3>
+        <p style="font-family:var(--font-accent);font-size:12px;color:var(--accent-primary);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px">Antrenor Certificat IFBB • Fondator Slim Studio</p>
+        <p style="font-family:var(--font-body);font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:14px;font-weight:400">
+          Am înfiinţat Slim Studio în 2023 cu o misiune clară: să ofer femeilor programul pe care mi-l doriseam și eu când eram la început.
+        </p>
+        <p style="font-family:var(--font-body);font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:14px;font-weight:400">
+          După 8 ani în industria fitness, am observat că cele mai bune rezultate vin din combinația perfectă de antrenament personalizat, nutriție adaptată și suport zilnic consistent.
+        </p>
+      </div>
+      <div style="border-top:1px solid rgba(16,185,129,0.15);padding-top:16px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div>
+            <div style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:var(--accent-primary)">200+</div>
+            <div style="font-size:12px;color:var(--muted);font-weight:500">Clienți transformate</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:var(--accent-primary)">8+</div>
+            <div style="font-size:12px;color:var(--muted);font-weight:500">Ani în fitness</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:rgba(16,185,129,0.1);border-left:3px solid var(--accent-primary);border-radius:8px;padding:16px">
+        <div style="font-size:12px;color:var(--text);line-height:1.7">
+          <strong style="color:var(--accent-primary)">Certificări:</strong><br>
+          IFBB Pro • ACE Fitness Specialist • Functional Training Specialist
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider" id="services">Servicii</div>
+<section class="sec">
+  <div class="sec-title">Serviciile noastre</div>
+  <div class="sec-sub">Programe complete pentru transformarea ta</div>
+  <div class="grid3">
+    <div class="card svc-card" style="cursor:pointer" onclick="showToast('Detalii serviciu — click pentru mai multe info')">
+      <div class="svc-icon"><img src="img/photo_2026-05-25_12-20-16.jpg" alt="Personal Training" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></img></div>
+      <h3>Antrenament personal</h3>
+      <p>Program individualizat cu antrenor dedicat. Exerciții adaptate obiectivelor tale.</p>
+      <div class="svc-price">de la 500 MDL / ședință</div>
+    </div>
+    <div class="card svc-card" style="cursor:pointer" onclick="showToast('Nutriționist certificat, plan lunar personalizat')">
+      <div class="svc-icon"><img src="img/healthy-food.jpg" alt="Nutrition Plan" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></img></div>
+      <h3>Plan nutrițional</h3>
+      <p>Consultație cu nutriționist certificat. Plan personalizat cu rețete și liste de cumpărături.</p>
+      <div class="svc-price">de la 800 MDL / lună</div>
+    </div>
+    <div class="card svc-card" style="cursor:pointer;border-color:#c8a882" onclick="showToast('Cel mai popular pachet — economisești 30%')">
+      <div style="font-size:10px;background:#EAF3DE;color:#3B6D11;padding:3px 8px;border-radius:20px;margin-bottom:10px;display:inline-block;font-weight:500">Popular</div>
+      <div class="svc-icon"><img src="img/alexia_gym_hero_resaved.png" alt="Complete Program" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></img></div>
+      <h3>Program complet Slim</h3>
+      <p>Antrenament + nutriție + monitorizare lunară. Cel mai eficient pachet al nostru.</p>
+      <div class="svc-price">de la 1500 MDL / lună <span style="font-size:10px;background:#EAF3DE;color:#3B6D11;padding:1px 6px;border-radius:10px;margin-left:4px">-30%</span></div>
+    </div>
+    <div class="card svc-card" style="cursor:pointer" onclick="showToast('Analiză corporală completă: IMC, masă, grăsime')">
+      <div class="svc-icon"><img src="img/coach-1.jpg" alt="Body Evaluation" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></img></div>
+      <h3>Evaluare corporală</h3>
+      <p>Analiză completă: IMC, masă musculară, grăsime corporală, măsurători.</p>
+      <div class="svc-price">200 MDL</div>
+    </div>
+    <div class="card svc-card" style="cursor:pointer" onclick="showToast('Clase de grup — marți și joi, 08:00')">
+      <div class="svc-icon"><img src="img/dumbbells.jpg" alt="Group Training" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></img></div>
+      <h3>Antrenament în grup</h3>
+      <p>Clase de grup, maxim 8 persoane. Marți și joi, ora 08:00.</p>
+      <div class="svc-price">250 MDL / ședință</div>
+    </div>
+    <div class="card svc-card" style="cursor:pointer" onclick="showToast('Coaching online cu video-consultații săptămânale')">
+      <div class="svc-icon"><img src="img/planck-girls.jpg" alt="Online Coaching" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></img></div>
+      <h3>Coaching online</h3>
+      <p>Program complet la distanță. Video-consultații săptămânale și suport continuu.</p>
+      <div class="svc-price">de la 1200 MDL / lună</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider">Metodă</div>
+<section class="sec sec-alt">
+  <div class="sec-title">Formula Noastră</div>
+  <div class="sec-sub">4 Piloni pentru Transformare Reală</div>
+  <div class="grid3" style="max-width:1000px">
+    <div class="card" style="text-align:center;cursor:pointer" onclick="showToast('Evaluare completa a starilor tale')">
+      <div style="margin-bottom:16px"><img src="img/coach-1.jpg" alt="Assessment" style="width:48px;height:48px;object-fit:contain;margin:0 auto;"></img></div>
+      <h3 style="font-family:var(--font-heading);font-size:18px;font-weight:700;margin-bottom:10px;color:var(--text)">Evaluare Completa</h3>
+      <p style="font-size:14px;color:var(--muted)">Analitica completa a corpului tau, obiectivelor si starii de sanatate actuale.</p>
+    </div>
+    <div class="card" style="text-align:center;cursor:pointer" onclick="showToast('Plan nutrițional personalizat')">
+      <div style="margin-bottom:16px"><img src="img/gallery-1.jpg" alt="Nutrition Plan" style="width:48px;height:48px;object-fit:contain;margin:0 auto;"></img></div>
+      <h3 style="font-family:var(--font-heading);font-size:18px;font-weight:700;margin-bottom:10px;color:var(--text)">Plan Nutrițional</h3>
+      <p style="font-size:14px;color:var(--muted)">Design personalizat cu nutriționist certificat pentru obiectivele tale.</p>
+    </div>
+    <div class="card" style="text-align:center;cursor:pointer" onclick="showToast('Antrenamente structurate')">
+      <div style="margin-bottom:16px"><img src="img/gallery-2.jpg" alt="Training" style="width:48px;height:48px;object-fit:contain;margin:0 auto;"></img></div>
+      <h3 style="font-family:var(--font-heading);font-size:18px;font-weight:700;margin-bottom:10px;color:var(--text)">Antrenamente</h3>
+      <p style="font-size:14px;color:var(--muted)">Program structurat cu progresie constanta, adaptat nivelului tau.</p>
+    </div>
+    <div class="card" style="text-align:center;cursor:pointer" onclick="showToast('Suport zilnic')">
+      <div style="margin-bottom:16px"><img src="img/gallery-3.jpg" alt="Daily Support" style="width:48px;height:48px;object-fit:contain;margin:0 auto;"></img></div>
+      <h3 style="font-family:var(--font-heading);font-size:18px;font-weight:700;margin-bottom:10px;color:var(--text)">Suport Zilnic</h3>
+      <p style="font-size:14px;color:var(--muted)">Acces 24/7 la echipa noastra pentru intrebari, probleme si motivație.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider">Testimoniale</div>
+<section class="sec sec-alt">
+  <div class="sec-title">Rezultate reale</div>
+  <div class="sec-sub">Clientele noastre vorbesc în locul nostru</div>
+  <div class="grid3">
+    <div class="card"><div class="t-stars">★★★★★</div><div class="t-text">"Am slăbit 12 kg în 3 luni! Programul e adaptat perfect nevoilor mele."</div><div class="t-author"><div class="avatar">MA</div><div><div class="t-name">Maria A.</div><div class="t-result">−12 kg în 3 luni</div></div></div></div>
+    <div class="card"><div class="t-stars">★★★★★</div><div class="t-text">"Nutriționistul și antrenoarea lucrează în echipă. Rezultate din prima lună."</div><div class="t-author"><div class="avatar">EC</div><div><div class="t-name">Elena C.</div><div class="t-result">−8 kg, tonus +</div></div></div></div>
+    <div class="card"><div class="t-stars">★★★★★</div><div class="t-text">"Cel mai profesionist studio din Chișinău. Recomand tuturor prietenelor mele."</div><div class="t-author"><div class="avatar">OB</div><div><div class="t-name">Olga B.</div><div class="t-result">Program menținere</div></div></div></div>
+  </div>
+</section>
+
+<div class="section-divider">Transformări</div>
+<section class="sec">
+  <div class="sec-title">Înainte & după</div>
+  <div class="sec-sub">Rezultatele reale ale clientelor noastre</div>
+  <div class="grid3">
+    <div class="ba-card"><div class="ba-imgs"><div class="ba-img ba-before" style="background-size:cover;background-image:url('img/healthy-food.jpg');position:relative;"><span style="position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,0.6);color:white;padding:4px 8px;border-radius:4px;font-size:11px;font-weight:500">Înainte</span></div><div class="ba-img ba-after" style="background-size:cover;background-image:url('img/gallery-4.jpg');position:relative;"><span style="position:absolute;bottom:8px;left:8px;background:rgba(91,138,114,0.8);color:white;padding:4px 8px;border-radius:4px;font-size:11px;font-weight:500">După</span></div></div><div class="ba-info"><div class="ba-name">Ana, 34 ani</div><div class="ba-res">−14 kg · −18 cm talie</div><div class="ba-time">Durată: 4 luni</div></div></div>
+    <div class="ba-card"><div class="ba-imgs"><div class="ba-img ba-before" style="background-size:cover;background-image:url('img/dumbbells.jpg');position:relative;"><span style="position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,0.6);color:white;padding:4px 8px;border-radius:4px;font-size:11px;font-weight:500">Înainte</span></div><div class="ba-img ba-after" style="background-size:cover;background-image:url('img/gallery-5.jpg');position:relative;"><span style="position:absolute;bottom:8px;left:8px;background:rgba(91,138,114,0.8);color:white;padding:4px 8px;border-radius:4px;font-size:11px;font-weight:500">După</span></div></div><div class="ba-info"><div class="ba-name">Natalia, 28 ani</div><div class="ba-res">−9 kg · tonus muscular</div><div class="ba-time">Durată: 2 luni</div></div></div>
+    <div class="ba-card"><div class="ba-imgs"><div class="ba-img ba-before" style="background-size:cover;background-image:url('img/planck-girls.jpg');position:relative;"><span style="position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,0.6);color:white;padding:4px 8px;border-radius:4px;font-size:11px;font-weight:500">Înainte</span></div><div class="ba-img ba-after" style="background-size:cover;background-image:url('img/gallery-6.jpg');position:relative;"><span style="position:absolute;bottom:8px;left:8px;background:rgba(91,138,114,0.8);color:white;padding:4px 8px;border-radius:4px;font-size:11px;font-weight:500">După</span></div></div><div class="ba-info"><div class="ba-name">Irina, 42 ani</div><div class="ba-res">−11 kg · energie crescută</div><div class="ba-time">Durată: 3 luni</div></div></div>
+  </div>
+</section>
+
+<div class="section-divider" id="booking">Programare</div>
+<section class="sec sec-alt">
+  <div class="sec-title">Programează o ședință</div>
+  <div class="sec-sub">Alege data și ora potrivite pentru tine</div>
+  <div class="booking-wrap">
+    <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;font-weight:500">Selectează data:</div>
+    <div class="slots-grid" id="slotsGrid"></div>
+    <div id="timePicker" style="display:none;margin-top:14px">
+      <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:8px;font-weight:500">Selectează ora:</div>
+      <div id="timePills" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+    </div>
+    <div id="bookForm" style="display:none;margin-top:20px">
+      <div class="form-row">
+        <div class="fg"><label>Prenume</label><input id="bn" type="text" placeholder="Maria"></div>
+        <div class="fg"><label>Telefon</label><input id="bp" type="tel" placeholder="+373 XX XXX XXX"></div>
+      </div>
+      <button class="btn-p" style="width:100%" onclick="confirmBook()">Confirmă programarea</button>
+    </div>
+    <div class="book-confirm" id="bookConf">
+      <div style="font-weight:500;color:#3B6D11;margin-bottom:4px">Programare confirmată!</div>
+      <div id="bookDetails" style="font-size:12px;color:#3B6D11;line-height:1.6"></div>
+      <div style="font-size:11px;color:#639922;margin-top:6px">Te vom contacta pentru confirmare finală.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider" id="calc">Calculatoare</div>
+<section class="sec">
+  <div class="sec-title">Calculatoare fitness</div>
+  <div class="sec-sub">Formule reale BMR & TDEE</div>
+  <div style="display:flex;justify-content:center">
+    <div class="calc-tabs">
+      <div class="ctab active" onclick="switchCalc('imc',this)">Calculator IMC</div>
+      <div class="ctab" onclick="switchCalc('cal',this)">Calculator calorii</div>
+    </div>
+  </div>
+  <div class="calc-block active" id="calc-imc">
+    <div class="form-row">
+      <div class="fg"><label>Înălțime (cm)</label><input type="number" id="ih" value="165" min="140" max="200" oninput="calcIMC()"></div>
+      <div class="fg"><label>Greutate (kg)</label><input type="number" id="iw" value="68" min="40" max="150" oninput="calcIMC()"></div>
+    </div>
+    <div class="calc-result">
+      <div class="calc-val" id="imcVal">24.9</div>
+      <div class="calc-label">Indicele de Masă Corporală</div>
+      <div class="calc-interp" id="imcInterp" style="color:#3B6D11">Greutate normală</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">Subponderal &lt;18.5 · Normal 18.5–24.9 · Supraponderal 25–29.9 · Obez ≥30</div>
+    </div>
+    <button class="btn-p" style="width:100%;margin-top:14px" onclick="sc('contact')">Doresc un program personalizat</button>
+  </div>
+  <div class="calc-block" id="calc-cal">
+    <div class="form-row">
+      <div class="fg"><label>Vârstă (ani)</label><input type="number" id="ca" value="30" oninput="calcCal()"></div>
+      <div class="fg"><label>Greutate (kg)</label><input type="number" id="cw" value="65" oninput="calcCal()"></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>Înălțime (cm)</label><input type="number" id="ch" value="165" oninput="calcCal()"></div>
+      <div class="fg"><label>Nivel activitate</label><select id="cact" onchange="calcCal()"><option value="1.2">Sedentar</option><option value="1.375" selected>Ușor activ (1–3/săpt)</option><option value="1.55">Moderat activ (3–5/săpt)</option><option value="1.725">Foarte activ (6–7/săpt)</option></select></div>
+    </div>
+    <div class="calc-result">
+      <div class="calc-val" id="calVal">1985</div>
+      <div class="calc-label">Calorii zilnice recomandate (TDEE)</div>
+      <div class="calc-interp" style="color:#3B6D11">BMR: <span id="calBMR">1442</span> kcal</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">Slăbire: −300–500 kcal · Menținere: TDEE · Masă: +200–300 kcal</div>
+    </div>
+    <button class="btn-p" style="width:100%;margin-top:14px" onclick="sc('contact')">Vreau plan nutrițional</button>
+  </div>
+</section>
+
+<div class="section-divider" id="quiz">Quiz fitness</div>
+<section class="sec sec-alt">
+  <div class="sec-title">Quiz fitness</div>
+  <div class="sec-sub">5 întrebări — descoperă programul potrivit</div>
+  <div class="quiz-prog"><div class="quiz-prog-bar" id="qbar" style="width:20%"></div></div>
+  <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:16px;text-align:center;max-width:480px;margin-left:auto;margin-right:auto" id="qctr">Întrebarea 1 din 5</div>
+  <div class="quiz-step active" id="qs1">
+    <div class="quiz-q">Care este obiectivul tău principal?</div>
+    <div class="quiz-sub">Alege varianta care ți se potrivește cel mai bine.</div>
+    <div class="quiz-opts">
+      <div class="qopt" onclick="selOpt(this,'goal','slabire')">Slăbire</div>
+      <div class="qopt" onclick="selOpt(this,'goal','tonus')">Tonifiere</div>
+      <div class="qopt" onclick="selOpt(this,'goal','masa')">Masă musculară</div>
+      <div class="qopt" onclick="selOpt(this,'goal','sanatate')">Sănătate generală</div>
+    </div>
+    <div class="quiz-nav"><div></div><button class="qnext" onclick="goQ(2)">Continuă</button></div>
+  </div>
+  <div class="quiz-step" id="qs2">
+    <div class="quiz-q">Câte antrenamente pe săptămână poți face?</div>
+    <div class="quiz-sub">Fii realistă cu programul tău.</div>
+    <div class="quiz-opts">
+      <div class="qopt" onclick="selOpt(this,'freq','1-2')">1–2 ori</div>
+      <div class="qopt" onclick="selOpt(this,'freq','3-4')">3–4 ori</div>
+      <div class="qopt" onclick="selOpt(this,'freq','5+')">5+ ori</div>
+      <div class="qopt" onclick="selOpt(this,'freq','0')">Abia încep</div>
+    </div>
+    <div class="quiz-nav"><button class="qback" onclick="goQ(1)">Înapoi</button><button class="qnext" onclick="goQ(3)">Continuă</button></div>
+  </div>
+  <div class="quiz-step" id="qs3">
+    <div class="quiz-q">Care este nivelul tău de fitness?</div>
+    <div class="quiz-sub">Honest este cel mai bun răspuns.</div>
+    <div class="quiz-opts">
+      <div class="qopt" onclick="selOpt(this,'level','incepator')">Începător</div>
+      <div class="qopt" onclick="selOpt(this,'level','mediu')">Intermediar</div>
+      <div class="qopt" onclick="selOpt(this,'level','avansat')">Avansat</div>
+      <div class="qopt" onclick="selOpt(this,'level','necunoscut')">Nu știu</div>
+    </div>
+    <div class="quiz-nav"><button class="qback" onclick="goQ(2)">Înapoi</button><button class="qnext" onclick="goQ(4)">Continuă</button></div>
+  </div>
+  <div class="quiz-step" id="qs4">
+    <div class="quiz-q">Ai restricții alimentare sau probleme de sănătate?</div>
+    <div class="quiz-sub">Informațiile sunt confidențiale.</div>
+    <div class="quiz-opts">
+      <div class="qopt" onclick="selOpt(this,'health','nu')">Nu, sunt sănătoasă</div>
+      <div class="qopt" onclick="selOpt(this,'health','diabet')">Diabet / glicemie</div>
+      <div class="qopt" onclick="selOpt(this,'health','articulatii')">Articulații / spate</div>
+      <div class="qopt" onclick="selOpt(this,'health','altele')">Altele</div>
+    </div>
+    <div class="quiz-nav"><button class="qback" onclick="goQ(3)">Înapoi</button><button class="qnext" onclick="goQ(5)">Continuă</button></div>
+  </div>
+  <div class="quiz-step" id="qs5">
+    <div class="quiz-q">Când vrei să începi?</div>
+    <div class="quiz-sub">Suntem pregătiți pentru tine oricând.</div>
+    <div class="quiz-opts">
+      <div class="qopt" onclick="selOpt(this,'start','imediat')">Imediat!</div>
+      <div class="qopt" onclick="selOpt(this,'start','saptamana')">Săptămâna aceasta</div>
+      <div class="qopt" onclick="selOpt(this,'start','luna')">Luna viitoare</div>
+      <div class="qopt" onclick="selOpt(this,'start','analizez')">Mă mai gândesc</div>
+    </div>
+    <div class="quiz-nav"><button class="qback" onclick="goQ(4)">Înapoi</button><button class="qnext" onclick="finishQ()">Vezi rezultatul</button></div>
+  </div>
+  <div class="quiz-step" id="qs-r" style="max-width:540px;margin:0 auto">
+    <div style="text-align:center;padding:16px 0">
+      <div style="font-size:42px;margin-bottom:20px">🎯</div>
+      <div style="font-family:var(--font-accent);font-size:28px;font-weight:600;margin-bottom:12px;color:var(--text)" id="qrtitle">Program recomandat</div>
+      <div style="font-family:var(--font-body);font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:28px;font-weight:400" id="qrtext"></div>
+
+      <div id="specialist-card" style="background:var(--bg-card);border:1px solid rgba(16,185,129,0.2);border-radius:20px;padding:0;margin-bottom:24px;overflow:hidden;box-shadow:var(--shadow-lg)">
+        <div style="height:240px;background:linear-gradient(135deg,rgba(16,185,129,0.1) 0%,rgba(16,185,129,0.08) 100%);display:flex;align-items:center;justify-content:center;overflow:hidden">
+          <img id="specialist-photo" src="" alt="Specialist" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="padding:32px">
+          <div style="text-align:center;margin-bottom:20px">
+            <div style="font-family:var(--font-accent);font-size:24px;font-weight:700;color:var(--text);margin-bottom:4px" id="specialist-name">Ana-Maria Ciobanu</div>
+            <div style="font-family:'Poppins',sans-serif;font-size:12px;color:var(--accent-primary);font-weight:700;letter-spacing:1px;text-transform:uppercase" id="specialist-role">Antrenor Certificat IFBB</div>
+          </div>
+          <div style="font-size:15px;color:var(--text-secondary);line-height:1.8;padding:16px 0;border-top:1px solid rgba(16,185,129,0.15);border-bottom:1px solid rgba(16,185,129,0.15)" id="specialist-desc">
+            Specializare în antrenament pentru femei. 8+ ani experiență. Peste 200 cliente transformate.
+          </div>
+          <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div style="text-align:center">
+              <div style="font-family:var(--font-accent);font-size:24px;font-weight:700;color:var(--accent-primary)">200+</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Clienți transformate</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-family:var(--font-accent);font-size:24px;font-weight:700;color:var(--accent-primary)">98%</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Rate de satisfacție</div>
+            </div>
+          </div>
+          <button class="btn-p" style="width:100%;margin-top:20px" onclick="sc('contact')">Programează cu acest specialist</button>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-surface);border-radius:12px;padding:16px;font-size:12px;color:var(--text);margin-bottom:18px;line-height:1.6">
+        <strong style="color:var(--text)">Ce urmează:</strong><br>
+        Răspunsurile tale au fost salvate în CRM. Specialista te va contacta în 24h cu o propunere personalizată și va stabili prima ședință de probă.
+      </div>
+
+      <button class="btn-p" style="width:100%" onclick="sc('contact')">Înscrie-te acum</button>
+      <button class="btn-s" style="width:100%;margin-top:8px" onclick="resetQ()">Reia quiz-ul</button>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider" id="team">Echipa</div>
+<section class="sec sec-alt">
+  <div class="sec-title">Specialistele noastre</div>
+  <div class="sec-sub">Profesioniști cu certificări și experiență internațională</div>
+  <div class="specialist-section">
+    <div class="specialist-card">
+      <div class="specialist-photo">
+        <img src="img/coach-1.jpg" alt="Ana-Maria Ciobanu - Specialist" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="specialist-info">
+        <div class="specialist-name">Ana-Maria Ciobanu</div>
+        <div class="specialist-title">Antrenor Certificat IFBB · Fondator</div>
+        <div class="specialist-bio">8+ ani în transformarea corpurilor. Expert în fitness funcțional și remodelare corporală. Peste 200 de cliente transformate cu rezultate vizibile și durabile.</div>
+        <ul class="specialist-certs">
+          <li>IFBB Pro Certified</li>
+          <li>ACE Fitness Specialist</li>
+          <li>Functional Training Expert</li>
+        </ul>
+        <div class="specialist-stats">
+          <div><div class="specialist-stat-value">200+</div><div class="specialist-stat-label">Clienți transformate</div></div>
+          <div><div class="specialist-stat-value">98%</div><div class="specialist-stat-label">Satisfacție</div></div>
+        </div>
+        <button class="specialist-btn" onclick="sc('contact')">Programează cu Ana-Maria</button>
+      </div>
+    </div>
+
+    <div class="specialist-card">
+      <div class="specialist-photo">
+        <img src="img/coach-2.jpg" alt="Olga - Nutritionist Specialist" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="specialist-info">
+        <div class="specialist-name">Olga</div>
+        <div class="specialist-title">Nutriționist Specialist</div>
+        <div class="specialist-bio">Planuri nutriționale personalizate adaptate fiecărei cliente. Consultații lunare, ajustări continue, monitorizare detaliată și suport zilnic prin chat.</div>
+        <ul class="specialist-certs">
+          <li>Nutriționist Certificat</li>
+          <li>Wellness Coach</li>
+          <li>Dietist Licențiat</li>
+        </ul>
+        <div class="specialist-stats">
+          <div><div class="specialist-stat-value">150+</div><div class="specialist-stat-label">Planuri create</div></div>
+          <div><div class="specialist-stat-value">95%</div><div class="specialist-stat-label">Aderență</div></div>
+        </div>
+        <button class="specialist-btn" onclick="sc('contact')">Programează cu Olga</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider" id="pricing">Prețuri</div>
+<section class="sec">
+  <div class="sec-title">Planuri și Tarife</div>
+  <div class="sec-sub">Alege pachetul potrivit pentru tine</div>
+  <div class="grid2">
+    <div class="card pricing-card">
+      <div style="font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--accent-primary);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Standard</div>
+      <div style="font-family:var(--font-accent);font-size:42px;font-weight:700;color:var(--text);margin-bottom:4px">500 <span style="font-size:18px;font-weight:400">MDL</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:24px;font-family:'Poppins',sans-serif">per ședință</div>
+      <ul style="list-style:none;margin-bottom:24px">
+        <li style="font-size:13px;color:var(--text);margin-bottom:10px;display:flex;gap:8px">
+          <span style="color:var(--accent-primary);font-weight:600">✓</span>
+          Antrenament personal de 60 min
+        </li>
+        <li style="font-size:13px;color:var(--text);margin-bottom:10px;display:flex;gap:8px">
+          <span style="color:var(--accent-primary);font-weight:600">✓</span>
+          Program adaptat obiectivelor tale
+        </li>
+        <li style="font-size:13px;color:var(--text);margin-bottom:10px;display:flex;gap:8px">
+          <span style="color:var(--accent-primary);font-weight:600">✓</span>
+          Suport și motivare din antrenor
+        </li>
+        <li style="font-size:13px;color:var(--muted);margin-bottom:10px;display:flex;gap:8px">
+          <span style="color:#ccc;font-weight:600">○</span>
+          Plan nutrițional
+        </li>
+      </ul>
+      <button class="btn-p" style="width:100%" onclick="sc('contact')">Programează ședință</button>
+    </div>
+
+    <div class="card pricing-card" style="border-color:var(--accent-primary);box-shadow:0 8px 32px rgba(16,185,129,0.3)">
+      <div style="display:inline-block;background:rgba(16,185,129,0.15);border:1px solid var(--accent-primary);color:var(--accent-primary);font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:12px">POPULAR</div>
+      <div style="font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--accent-primary);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Premium</div>
+      <div style="font-family:var(--font-accent);font-size:42px;font-weight:700;color:var(--text);margin-bottom:4px">1500 <span style="font-size:18px;font-weight:400">MDL</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:24px;font-family:'Poppins',sans-serif">per lună</div>
+      <ul style="list-style:none;margin-bottom:24px">
+        <li style="font-size:13px;color:var(--text);margin-bottom:10px;display:flex;gap:8px">
+          <span style="color:var(--accent-primary);font-weight:600">✓</span>
+          8 ședințe antrenament/lună
+        </li>
+        <li style="font-size:13px;color:var(--text);margin-bottom:10px;display:flex;gap:8px">
+          <span style="color:var(--accent-primary);font-weight:600">✓</span>
+          Plan nutrițional personalizat
+        </li>
+        <li style="font-size:13px;color:var(--text);margin-bottom:10px;display:flex;gap:8px">
+          <span style="color:var(--accent-primary);font-weight:600">✓</span>
+          Chat zilnic de suport
+        </li>
+        <li style="font-size:13px;color:var(--text);margin-bottom:10px;display:flex;gap:8px">
+          <span style="color:var(--accent-primary);font-weight:600">✓</span>
+          Monitorizare lunară și ajustări
+        </li>
+      </ul>
+      <button class="btn-p" style="width:100%;background:var(--accent-primary)" onclick="sc('contact')">Alege Premium</button>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider" id="blog">Blog</div>
+<section class="sec">
+  <div class="sec-title">Blog & sfaturi</div>
+  <div class="sec-sub">Articole despre fitness, nutriție și stil de viață</div>
+  <div class="blog-grid">
+    <div class="blog-card" onclick="showToast('Articol complet în versiunea de producție')"><div class="blog-img"><img src="img/healthy-food.jpg" alt="Nutrition Tips" style="width:100%;height:100%;object-fit:cover;"></img></div><div class="blog-body"><div class="blog-tag">Nutriție</div><h3>5 alimente care accelerează metabolismul după 35 de ani</h3><p>Descoperă ce alimente trebuie incluse în dieta ta pentru rezultate mai rapide...</p><div class="blog-date">12 mai 2026</div></div></div>
+    <div class="blog-card" onclick="showToast('Articol complet în versiunea de producție')"><div class="blog-img"><img src="img/dumbbells.jpg" alt="Fitness Training" style="width:100%;height:100%;object-fit:cover;"></img></div><div class="blog-body"><div class="blog-tag">Fitness</div><h3>Cum să faci 30 de minute să conteze cât o oră de sală</h3><p>Tehnica HIIT adaptată pentru femei. Exerciții eficiente cu timp minim...</p><div class="blog-date">8 mai 2026</div></div></div>
+    <div class="blog-card" onclick="showToast('Articol complet în versiunea de producție')"><div class="blog-img"><img src="img/planck-girls.jpg" alt="Healthy Lifestyle" style="width:100%;height:100%;object-fit:cover;"></img></div><div class="blog-body"><div class="blog-tag">Lifestyle</div><h3>Somnul și slăbirea: conexiunea pe care nu o știai</h3><p>Studiile arată că somnul insuficient sabotează orice program de slăbire...</p><div class="blog-date">3 mai 2026</div></div></div>
+  </div>
+</section>
+
+<div class="section-divider">Garanție</div>
+<section class="sec sec-alt">
+  <div class="sec-title">Garantia Slim Studio</div>
+  <div class="sec-sub">Suntem sigure pe rezultate</div>
+  <div style="max-width:800px;margin:0 auto">
+    <div style="background:var(--bg-card);border:2px solid var(--accent-primary);border-radius:16px;padding:32px;text-align:center;margin-bottom:32px">
+      <div style="font-size:48px;margin-bottom:16px">✓</div>
+      <h3 style="font-family:var(--font-accent);font-size:24px;font-weight:600;color:var(--text);margin-bottom:12px">Rezultate Garantate sau Bani Înapoi</h3>
+      <p style="font-family:var(--font-body);font-size:16px;color:var(--muted);line-height:1.8">
+        Dacă după 12 săptămâni de program Premium (cu implicare constantă din partea ta) nu observi schimbări vizibile în corp, te returnez 100% din plată. Fără întrebări.
+      </p>
+    </div>
+
+    <div class="grid2">
+      <div class="card" style="text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">🎯</div>
+        <h4 style="font-family:var(--font-accent);font-size:18px;font-weight:600;color:var(--text);margin-bottom:8px">Program Personal</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7">Design complet adaptat doar pentru tine, scopul tău și corpul tău.</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">📱</div>
+        <h4 style="font-family:var(--font-accent);font-size:18px;font-weight:600;color:var(--text);margin-bottom:8px">Suport Zilnic</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7">Chat constant cu antrenorul. Răspunsuri rapide la întrebări și ajustări când e nevoie.</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">📊</div>
+        <h4 style="font-family:var(--font-accent);font-size:18px;font-weight:600;color:var(--text);margin-bottom:8px">Monitorizare Lunară</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7">Măsurători, cântărire, ajustări la program. Progres documentat și vizibil.</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">🏆</div>
+        <h4 style="font-family:var(--font-accent);font-size:18px;font-weight:600;color:var(--text);margin-bottom:8px">Comunitate</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7">Femeile din program se motivează reciproc. Transformări se vad mai repede în grup.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider">FAQ</div>
+<section class="sec sec-alt">
+  <div class="sec-title">Întrebări frecvente</div>
+  <div style="max-width:600px;margin:0 auto">
+    <div class="faq-item"><div class="faq-q" onclick="tFaq(this)">Câte antrenamente pe săptămână sunt recomandate? <span>+</span></div><div class="faq-a">Pentru rezultate optime recomandăm 3–4 antrenamente pe săptămână, combinate cu planul nutrițional personalizat. Programul se adaptează în funcție de obiective și disponibilitate.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tFaq(this)">Există o primă ședință gratuită? <span>+</span></div><div class="faq-a">Da! Oferim o consultație și o ședință de probă gratuită. Completează formularul și te vom contacta pentru a stabili data și ora.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tFaq(this)">Lucrați și cu persoane fără experiență în fitness? <span>+</span></div><div class="faq-a">Absolut! Majoritatea clientelor noastre au început fără nicio experiență. Programul începe de la nivel zero și crește treptat în intensitate.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="tFaq(this)">Cum funcționează planul de nutriție? <span>+</span></div><div class="faq-a">Nutriționistul nostru elaborează un plan complet personalizat, bazat pe obiective și preferințe alimentare. Planul se revizuiește lunar.</div></div>
+  </div>
+</section>
+
+<div class="section-divider" id="contact">Înregistrare</div>
+<section class="sec">
+  <div class="sec-title">Înscrie-te gratuit</div>
+  <div class="sec-sub">Completează formularul</div>
+  <div class="form-wrap">
+    <div id="fContent">
+      <div class="form-title">Formular de înregistrare</div>
+      <div class="form-sub">Câmpurile marcate cu * sunt obligatorii</div>
+      <div class="form-row">
+        <div class="fg"><label>Prenume *</label><input type="text" id="fn" placeholder="Prenumele tău"><div class="ferr" id="en">Câmpul este obligatoriu</div></div>
+        <div class="fg"><label>Telefon *</label><input type="tel" id="fp" placeholder="+373 XX XXX XXX"><div class="ferr" id="ep">Număr invalid</div></div>
+      </div>
+      <div class="fg"><label>Email *</label><input type="email" id="fe" placeholder="email@exemplu.com"><div class="ferr" id="ee">Email invalid</div></div>
+      <div class="form-row">
+        <div class="fg"><label>Obiectiv</label><select id="fg"><option value="">Selectează...</option><option>Slăbire</option><option>Tonifiere</option><option>Masă musculară</option><option>Sănătate generală</option></select></div>
+        <div class="fg"><label>Vârstă</label><input type="number" id="fage" placeholder="Ex: 30" min="16" max="80"></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Greutate actuală (kg)</label><input type="number" id="fwc" placeholder="Ex: 75"></div>
+        <div class="fg"><label>Greutate dorită (kg)</label><input type="number" id="fwt" placeholder="Ex: 63"></div>
+      </div>
+      <div class="fg"><label>Mesaj (opțional)</label><textarea id="fmsg" rows="3" placeholder="Spune-ne mai mult..."></textarea></div>
+      <div class="consent-row"><input type="checkbox" id="fcons"><span>Sunt de acord cu <a href="#contact">Politica de confidențialitate</a> și prelucrarea datelor conform GDPR.</span></div>
+      <div class="ferr" id="econs" style="margin-top:-6px;margin-bottom:8px">Consimțământul este obligatoriu</div>
+      <button class="f-submit" id="fsubmit" onclick="submitForm()">Trimite formularul</button>
+      <div class="tg-row">
+        <span class="tg-badge">Telegram instant</span>
+        <span class="tg-badge" style="background:#EEEDFE;color:#534AB7">Email automat</span>
+        <span class="tg-badge" style="background:#EAF3DE;color:#3B6D11">SMS confirmare</span>
+      </div>
+    </div>
+    <div class="f-success" id="fSuccess">
+      <div style="font-size:36px;margin-bottom:12px">🎉</div>
+      <div style="font-size:17px;font-weight:500;margin-bottom:6px">Înregistrare reușită!</div>
+      <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:16px"><span>Mulțumim! Te vom contacta în 24 de ore.</span> <strong id="sName"></strong></div>
+      <div style="background:#f0e8dc;border-radius:8px;padding:10px;font-size:11px;color:#8a7a6a;margin-bottom:16px">Adminul a primit notificare Telegram · Email de confirmare trimis · Lead adăugat în CRM</div>
+      <button class="btn-s" onclick="sc('crm')">Vezi CRM Admin</button>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider">Acțiune Finală</div>
+<section class="sec">
+  <div style="max-width:700px;margin:0 auto;text-align:center;background:linear-gradient(135deg,rgba(16,185,129,0.08) 0%,rgba(16,185,129,0.05) 100%);border-radius:20px;padding:48px;border:1px solid rgba(16,185,129,0.25)">
+    <h2 style="font-family:var(--font-accent);font-size:36px;font-weight:600;color:var(--text);margin-bottom:16px">Pășește spre Schimbare</h2>
+    <p style="font-family:var(--font-body);font-size:17px;color:var(--muted);line-height:1.8;margin-bottom:28px;font-weight:400">
+      Fiecare clientă Slim Studio a început exact cum faci tu acum — cu o decizie. Restul vine de la sine cu suportul potrivit.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <button class="btn-p" style="padding:16px 40px;font-size:15px" onclick="sc('contact')">Completează Quizul (Gratuit)</button>
+      <button class="btn-s" style="padding:14px 40px;font-size:15px" onclick="sc('booking')">Programează Ședință</button>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider" id="crm">Admin CRM</div>
+<section class="sec sec-alt">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+    <div style="font-size:18px;font-weight:500">Admin CRM Dashboard</div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <span style="font-size:11px;background:#EAF3DE;color:#3B6D11;padding:3px 9px;border-radius:20px">Online</span>
+      <button class="expbtn" onclick="showToast('Export Excel generat!')"><i class="ti ti-download" aria-hidden="true" style="font-size:13px"></i> Export Excel</button>
+    </div>
+  </div>
+  <div class="dash-metrics">
+    <div class="metric"><div class="metric-val" id="mTotal">0</div><div class="metric-label">Total lead-uri</div><div class="metric-up">+3 azi</div></div>
+    <div class="metric"><div class="metric-val" id="mNew">0</div><div class="metric-label">Lead-uri noi</div><div class="metric-up">Necontactate</div></div>
+    <div class="metric"><div class="metric-val" id="mActive">0</div><div class="metric-label">Clienți activi</div><div class="metric-up">+2 luna aceasta</div></div>
+    <div class="metric"><div class="metric-val" id="mConv">0%</div><div class="metric-label">Rată conversie</div><div class="metric-up">+5% vs luna trecută</div></div>
+  </div>
+  <div class="crm-filters">
+    <input class="srch" id="crmS" placeholder="Caută după nume, telefon..." oninput="renderLeads()">
+    <button class="fbtn active" onclick="setFilter('all',this)">Toți</button>
+    <button class="fbtn" onclick="setFilter('new',this)">Lead Nou</button>
+    <button class="fbtn" onclick="setFilter('contacted',this)">Contactat</button>
+    <button class="fbtn" onclick="setFilter('scheduled',this)">Programat</button>
+    <button class="fbtn" onclick="setFilter('active',this)">Client Activ</button>
+    <button class="fbtn" onclick="setFilter('done',this)">Finalizat</button>
+  </div>
+  <div style="overflow-x:auto">
+    <table class="leads-table">
+      <colgroup><col style="width:18%"><col style="width:16%"><col style="width:13%"><col style="width:12%"><col style="width:10%"><col style="width:13%"><col style="width:18%"></colgroup>
+      <thead><tr><th>Nume</th><th>Telefon</th><th>Obiectiv</th><th>Greutate</th><th>Data</th><th>Status</th><th>Acțiuni</th></tr></thead>
+      <tbody id="leadsBody"></tbody>
+    </table>
+  </div>
+  <div id="noLeads" style="text-align:center;padding:32px;color:var(--color-text-secondary);font-size:13px;display:none">Nicio înregistrare găsită</div>
+</section>
+
+<div style="background:#05060A;color:var(--text);text-align:center;padding:40px 48px;font-size:13px;line-height:2">
+  <div style="font-family:var(--font-accent);font-size:20px;font-weight:600;letter-spacing:3px;margin-bottom:12px">SLIM STUDIO</div>
+  <div style="font-family:var(--font-body);font-size:14px;font-weight:400;margin-bottom:8px">Bulevardul Gagarin 14, Alexia Fitness & Wellness Club · Chișinău</div>
+  <a href="tel:+37369624666" style="color:var(--accent-primary);text-decoration:none;font-weight:600">0 (69) 624-666</a> &nbsp;·&nbsp;
+  <a href="https://www.instagram.com/ladyfit.amy" style="color:var(--accent-primary);text-decoration:none;font-weight:600">@ladyfit.amy</a><br>
+  <span style="color:rgba(160,160,160,0.6);font-family:'Poppins',sans-serif;font-size:11px;margin-top:12px;display:block">© 2026 Slim Studio · Politica de confidențialitate</span>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* CRM & APP STATE                                                             */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+var crmLeads=[
+  {id:1,name:'Maria Antonescu',phone:'+373 69 123 456',goal:'Slăbire',weight:'78/63',date:'07 iun',status:'new'},
+  {id:2,name:'Elena Cojocaru',phone:'+373 78 234 567',goal:'Tonifiere',weight:'65/60',date:'06 iun',status:'contacted'},
+  {id:3,name:'Olga Bivol',phone:'+373 69 345 678',goal:'Masă musculară',weight:'58/62',date:'05 iun',status:'scheduled'},
+  {id:4,name:'Natalia Rusu',phone:'+373 79 456 789',goal:'Slăbire',weight:'85/70',date:'04 iun',status:'active'},
+  {id:5,name:'Ana Moraru',phone:'+373 68 567 890',goal:'Sănătate',weight:'72/68',date:'03 iun',status:'done'}
+];
+var crmFilter='all';
+var qAnswers={};
+var selSlot=null,selTime=null;
+var slots=[
+  {date:'Mar 10 iun',avail:4},{date:'Joi 12 iun',avail:2},{date:'Mar 17 iun',avail:6},
+  {date:'Joi 19 iun',avail:0},{date:'Mar 24 iun',avail:5},{date:'Joi 26 iun',avail:3}
+];
+var times=['08:00','08:30','09:00','09:30','10:00'];
+
+function sc(id){
+  var el=document.getElementById(id);
+  if(el){
+    el.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  t.style.animation='slideUp 0.3s ease';
+  setTimeout(function(){t.classList.remove('show')},3200);
+}
+function tFaq(el){
+  var a=el.nextElementSibling,sp=el.querySelector('span');
+  a.classList.toggle('open');sp.textContent=a.classList.contains('open')?'−':'+';
+}
+function switchCalc(tab,btn){
+  document.querySelectorAll('.ctab').forEach(function(b){b.classList.remove('active')});
+  document.querySelectorAll('.calc-block').forEach(function(c){c.classList.remove('active')});
+  btn.classList.add('active');
+  document.getElementById('calc-'+tab).classList.add('active');
+}
+function calcIMC(){
+  var h=parseFloat(document.getElementById('ih').value)/100;
+  var w=parseFloat(document.getElementById('iw').value);
+  if(!h||!w)return;
+  var bmi=w/(h*h);
+  document.getElementById('imcVal').textContent=bmi.toFixed(1);
+  var el=document.getElementById('imcInterp');
+  if(bmi<18.5){el.textContent='Subponderal';el.style.color='#185FA5';}
+  else if(bmi<25){el.textContent='Greutate normală';el.style.color='#3B6D11';}
+  else if(bmi<30){el.textContent='Supraponderal';el.style.color='#BA7517';}
+  else{el.textContent='Obezitate';el.style.color='#A32D2D';}
+}
+function calcCal(){
+  var age=parseFloat(document.getElementById('ca').value)||30;
+  var w=parseFloat(document.getElementById('cw').value)||65;
+  var h=parseFloat(document.getElementById('ch').value)||165;
+  var act=parseFloat(document.getElementById('cact').value)||1.375;
+  var bmr=Math.round(10*w+6.25*h-5*age-161);
+  var tdee=Math.round(bmr*act);
+  document.getElementById('calVal').textContent=tdee;
+  document.getElementById('calBMR').textContent=bmr;
+}
+function selOpt(el,key,val){
+  el.parentElement.querySelectorAll('.qopt').forEach(function(o){o.classList.remove('sel')});
+  el.classList.add('sel');qAnswers[key]=val;
+}
+function goQ(step){
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active')});
+  var el=document.getElementById('qs'+step);
+  if(el)el.classList.add('active');
+  var pct=Math.round((step/5)*100);
+  document.getElementById('qbar').style.width=pct+'%';
+  document.getElementById('qctr').textContent='Întrebarea '+step+' din 5';
+}
+function finishQ(){
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active')});
+  document.getElementById('qs-r').classList.add('active');
+  document.getElementById('qbar').style.width='100%';
+  document.getElementById('qctr').textContent='Completat!';
+  var g=qAnswers.goal||'slabire';
+  var titles={slabire:tr('quiz_program_slim'),tonus:tr('quiz_program_tone'),masa:tr('quiz_program_mass'),sanatate:tr('quiz_program_wellness')};
+  var descs={
+    slabire:'Pe baza răspunsurilor tale, programul ideal combină cardio + forță și un plan nutrițional cu deficit caloric controlat. Rezultate vizibile în 6–8 săptămâni.',
+    tonus:'Corpul tău are nevoie de antrenament cu greutăți moderate și repetări mai multe, combinat cu un plan proteic. Tonifiere vizibilă în 4–6 săptămâni.',
+    masa:'Recomandăm un program de hipertrofie cu progresie de volum și surplus caloric de 200–300 kcal/zi. Rezultate în 8–12 săptămâni.',
+    sanatate:'Programul optim combină mișcare regulată (150 min/săpt), nutriție echilibrată și monitorizarea biomarkerilor. Focus pe energie și bunăstare.'
+  };
+  var specialistInfo={
+    slabire:{name:'Ana-Maria Ciobanu',role:'Antrenor IFBB - Slăbire & Tonifiere',desc:'Specializare în pierderea de greutate sănătoasă. Peste 150 cliente au slăbit cu ea. Metodă proven: cardio+strength+nutriție. 6-8 săptămâni pentru rezultate vizibile.',photo:'data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 600%27%3E%3Crect fill=%27%23171A21%27 width=%27400%27 height=%27600%27/%3E%3Ccircle cx=%27200%27 cy=%27150%27 r=%2760%27 fill=%27%23D4AF37%27/%3E%3Crect x=%2780%27 y=%27240%27 width=%27240%27 height=%27280%27 fill=%271E222B%27/%3E%3C/svg%3E'},
+    tonus:{name:'Ana-Maria Ciobanu',role:'Antrenor IFBB - Tonifiere',desc:'Expert în tonifierea corpului fără excese. Programe adaptive. Rezultate în 4-6 săptămâni cu abordare personalizată.',photo:'data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 600%27%3E%3Crect fill=%27%23171A21%27 width=%27400%27 height=%27600%27/%3E%3Ccircle cx=%27200%27 cy=%27150%27 r=%2760%27 fill=%27%23D4AF37%27/%3E%3Crect x=%2780%27 y=%27240%27 width=%27240%27 height=%27280%27 fill=%271E222B%27/%3E%3C/svg%3E'},
+    masa:{name:'Ana-Maria Ciobanu',role:'Antrenor IFBB - Masă Musculară',desc:'Specialitate: construirea masei musculare lean. Planuri de antrenament avansate cu progresie sistematică. 8-12 săptămâni pentru rezultate',photo:'data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 600%27%3E%3Crect fill=%27%23171A21%27 width=%27400%27 height=%27600%27/%3E%3Ccircle cx=%27200%27 cy=%27150%27 r=%2760%27 fill=%27%23D4AF37%27/%3E%3Crect x=%2780%27 y=%27240%27 width=%27240%27 height=%27280%27 fill=%271E222B%27/%3E%3C/svg%3E'},
+    sanatate:{name:'Olga',role:'Nutriționist Specialist - Wellness',desc:'Plan nutrițional complet, adaptabil stilului tău de viață. Monitorizare lunară a sănătății generale și energiei. Abordare holistică.',photo:'data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 600%27%3E%3Crect fill=%27%23171A21%27 width=%27400%27 height=%27600%27/%3E%3Ccircle cx=%27200%27 cy=%27150%27 r=%2760%27 fill=%27%23E8B4A8%27/%3E%3Crect x=%2780%27 y=%27240%27 width=%27240%27 height=%27280%27 fill=%271E222B%27/%3E%3C/svg%3E'}
+  };
+  document.getElementById('qrtitle').textContent=titles[g]||'Program Personalizat';
+  document.getElementById('qrtext').textContent=descs[g]||'';
+  var spec=specialistInfo[g]||specialistInfo.slabire;
+  document.getElementById('specialist-photo').src=spec.photo;
+  document.getElementById('specialist-name').textContent=spec.name;
+  document.getElementById('specialist-role').textContent=spec.role;
+  document.getElementById('specialist-desc').textContent=spec.desc;
+  showToast('Răspunsurile salvate în CRM!');
+}
+function resetQ(){
+  qAnswers={};
+  document.querySelectorAll('.qopt').forEach(function(o){o.classList.remove('sel')});
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active')});
+  document.getElementById('qs1').classList.add('active');
+  document.getElementById('qbar').style.width='20%';
+  document.getElementById('qctr').textContent='Întrebarea 1 din 5';
+}
+function renderSlots(){
+  var g=document.getElementById('slotsGrid');
+  g.innerHTML=slots.map(function(s,i){
+    var full=s.avail===0,few=s.avail<=2&&!full;
+    return '<div class="slot'+(full?' full':'')+'" '+(full?'':'onclick="pickSlot('+i+')"')+' data-i="'+i+'">'
+      +'<div class="slot-date">'+s.date+'</div>'
+      +'<div class="slot-time">08:00 – 10:00</div>'
+      +'<div class="slot-avail '+(full?'avail-none':few?'avail-few':'avail-ok')+'">'+(full?'Complet':'locuri'.replace('{count}',s.avail))+'</div>'
+      +'</div>';
+  }).join('');
+}
+function pickSlot(i){
+  document.querySelectorAll('.slot').forEach(function(s){s.classList.remove('selected')});
+  document.querySelector('.slot[data-i="'+i+'"]').classList.add('selected');
+  selSlot=slots[i];selTime=null;
+  var tp=document.getElementById('timePills');
+  tp.innerHTML=times.map(function(t){
+    return '<div class="time-pill" onclick="pickTime(this,\''+t+'\'">'+t+'</div>';
+  }).join('');
+  document.getElementById('timePicker').style.display='block';
+  document.getElementById('bookForm').style.display='none';
+  document.getElementById('bookConf').classList.remove('show');
+}
+function pickTime(el,t){
+  document.querySelectorAll('.time-pill').forEach(function(p){p.classList.remove('sel')});
+  el.classList.add('sel');selTime=t;
+  document.getElementById('bookForm').style.display='block';
+}
+function confirmBook(){
+  var name=document.getElementById('bn').value.trim();
+  var phone=document.getElementById('bp').value.trim();
+  if(!name||!phone){showToast('Completează numele și telefonul!');return;}
+  document.getElementById('bookDetails').innerHTML='<strong>'+name+'</strong> · '+selSlot.date+' · '+selTime+'<br>Bulevardul Gagarin 14, Alexia Fitness & Wellness Club';
+  document.getElementById('bookConf').classList.add('show');
+  document.getElementById('bookForm').style.display='none';
+  showToast('Programare confirmată! Notificare Telegram trimisă.');
+}
+function submitForm(){
+  var name=document.getElementById('fn').value.trim();
+  var phone=document.getElementById('fp').value.trim();
+  var email=document.getElementById('fe').value.trim();
+  var cons=document.getElementById('fcons').checked;
+  var ok=true;
+  ['en','ep','ee','econs'].forEach(function(id){document.getElementById(id).classList.remove('show')});
+  if(!name){document.getElementById('en').classList.add('show');ok=false;}
+  if(!phone||phone.length<9){document.getElementById('ep').classList.add('show');ok=false;}
+  if(!email||!email.includes('@')){document.getElementById('ee').classList.add('show');ok=false;}
+  if(!cons){document.getElementById('econs').classList.add('show');ok=false;}
+  if(!ok)return;
+  var btn=document.getElementById('fsubmit');
+  btn.textContent='Se trimite...';btn.disabled=true;
+  var newLead={
+    id:crmLeads.length+1,name:name,phone:phone,
+    goal:document.getElementById('fg').value||'Nespecificat',
+    weight:(document.getElementById('fwc').value||'?')+'/'+(document.getElementById('fwt').value||'?'),
+    date:new Date().toLocaleDateString('ro-MD',{day:'2-digit',month:'short'}),status:'new'
+  };
+  setTimeout(function(){
+    crmLeads.unshift(newLead);
+    document.getElementById('fContent').style.display='none';
+    document.getElementById('fSuccess').classList.add('show');
+    document.getElementById('sName').textContent=name;
+    renderLeads();updateMetrics();
+    showToast('Lead nou adăugat în CRM + notificare Telegram!');
+  },1200);
+}
+function setFilter(f,btn){
+  crmFilter=f;
+  document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');renderLeads();
+}
+function renderLeads(){
+  var search=document.getElementById('crmS').value.toLowerCase();
+  var smap={new:'s-new',contacted:'s-contacted',scheduled:'s-scheduled',active:'s-active',done:'s-done'};
+  var lmap={new:tr('crm_new'),contacted:tr('crm_contacted'),scheduled:tr('crm_scheduled'),active:tr('crm_active'),done:tr('crm_done')};
+  var filtered=crmLeads.filter(function(l){
+    var ms=crmFilter==='all'||l.status===crmFilter;
+    var mq=!search||l.name.toLowerCase().includes(search)||l.phone.includes(search);
+    return ms&&mq;
+  });
+  var tbody=document.getElementById('leadsBody');
+  if(!filtered.length){tbody.innerHTML='';document.getElementById('noLeads').style.display='block';return;}
+  document.getElementById('noLeads').style.display='none';
+  tbody.innerHTML=filtered.map(function(l){
+    return '<tr><td style="font-weight:500">'+l.name+'</td><td style="color:#a0845a">'+l.phone+'</td><td>'+l.goal+'</td><td style="color:var(--color-text-secondary)">'+l.weight+' kg</td><td style="color:var(--color-text-secondary)">'+l.date+'</td><td><span class="sbadge '+smap[l.status]+'">'+lmap[l.status]+'</span></td><td><button class="act-btn" onclick="changeStatus('+l.id+')">Status</button><button class="act-btn" onclick="showToast(\'Telegram: '+l.name.split(' ')[0]+'\')">TG</button></td></tr>';
+  }).join('');
+}
+function changeStatus(id){
+  var order=['new','contacted','scheduled','active','done'];
+  var lead=crmLeads.find(function(l){return l.id===id});
+  if(!lead)return;
+  var i=order.indexOf(lead.status);
+  lead.status=order[(i+1)%order.length];
+  renderLeads();updateMetrics();showToast('Status actualizat!');
+}
+function updateMetrics(){
+  var t=crmLeads.length;
+  var n=crmLeads.filter(function(l){return l.status==='new'}).length;
+  var a=crmLeads.filter(function(l){return l.status==='active'}).length;
+  document.getElementById('mTotal').textContent=t;
+  document.getElementById('mNew').textContent=n;
+  document.getElementById('mActive').textContent=a;
+  document.getElementById('mConv').textContent=(t?Math.round(a/t*100):0)+'%';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  renderSlots();calcIMC();calcCal();renderLeads();updateMetrics();
+  document.querySelectorAll('.card').forEach(function(card,i){
+    setTimeout(function(){card.style.animation='fadeIn 0.5s ease forwards'},i*50);
+  });
+});
+window.addEventListener('scroll',function(){
+  var nav=document.querySelector('.nav');
+  nav.style.boxShadow=window.scrollY>20?'0 4px 12px rgba(0,0,0,0.08)':'0 2px 8px rgba(0,0,0,0.08)';
+});
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SCROLL REVEAL ANIMATIONS - Intersection Observer                             */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+var revealElements=document.querySelectorAll('.sec');
+var scrollRevealObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      entry.target.style.animation='slideUpIn 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards';
+    }
+  });
+},{threshold:0.1,rootMargin:'0px 0px -80px 0px'});
+
+revealElements.forEach(function(el){
+  el.classList.add('scroll-reveal');
+  scrollRevealObserver.observe(el);
+});
+
+/* Stagger effect for grid items */
+var gridItems=document.querySelectorAll('.grid3 .card, .grid2 .card');
+gridItems.forEach(function(item,i){
+  item.style.setProperty('--delay',i*0.1+'s');
+  item.style.animation='slideUpIn 0.8s cubic-bezier(0.34,1.56,0.64,1) '+i*0.1+'s both';
+});
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* PARALLAX EFFECT - Hero visual layer                                          */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+if(window.innerWidth>768){
+  var heroVisual=document.querySelector('.hero-visual');
+  if(heroVisual){
+    window.addEventListener('scroll',function(){
+      var scrolled=window.scrollY;
+      heroVisual.style.transform='translateY('+scrolled*0.3+'px)';
+    });
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SCROLL PROGRESS INDICATOR - Top bar                                          */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+var progressBar=document.createElement('div');
+progressBar.style.cssText='position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#C8A24A 0%,#7EE0C3 100%);width:0;z-index:999;transition:width 0.1s ease';
+document.body.appendChild(progressBar);
+
+window.addEventListener('scroll',function(){
+  var windowHeight=document.documentElement.scrollHeight-window.innerHeight;
+  var scrolled=windowHeight>0?(window.scrollY/windowHeight)*100:0;
+  progressBar.style.width=scrolled+'%';
+});
+</script>
+<script src="i18n.js"></script>

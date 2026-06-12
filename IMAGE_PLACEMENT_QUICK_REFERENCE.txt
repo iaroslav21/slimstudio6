@@ -1,0 +1,58 @@
+SLIM STUDIO - IMAGE PLACEMENT QUICK REFERENCE
+═══════════════════════════════════════════════════════════════════════════════
+
+SECTION-BY-SECTION IMAGE MAP:
+
+HERO BANNER
+  Image: alexia_gym_hero_resaved.png (837K)
+  Content: Professional gym with fit woman
+  Purpose: Main visual hero
+
+SERVICES (6 CARDS)
+  1. Personal Training → photo_2026-05-25_12-20-16.jpg (fit woman)
+  2. Nutrition Plan → healthy-food.jpg (healthy food)
+  3. Complete Program (Popular) → alexia_gym_hero_resaved.png (gym interior)
+  4. Body Evaluation → coach-1.jpg (professional portrait)
+  5. Group Training → dumbbells.jpg (training equipment)
+  6. Online Coaching → planck-girls.jpg (core training)
+
+BLOG (3 ARTICLES)
+  1. Nutrition Tips → healthy-food.jpg
+  2. Fitness Training → dumbbells.jpg
+  3. Lifestyle → planck-girls.jpg
+
+TEAM
+  Ana-Maria Ciobanu → coach-1.jpg
+  Olga (Nutritionist) → coach-2.jpg
+
+BEFORE & AFTER
+  Ana: healthy-food.jpg (before) + gallery-4.jpg (after)
+  Natalia: dumbbells.jpg (before) + gallery-5.jpg (after)
+  Irina: planck-girls.jpg (before) + gallery-6.jpg (after)
+
+METHOD ICONS (48px)
+  Assessment → coach-1.jpg
+  Nutrition → gallery-1.jpg
+  Training → gallery-2.jpg
+  Support → gallery-3.jpg
+
+ABOUT SECTION
+  Ana-Maria Story → coach-1.jpg
+
+QUIZ RESULTS
+  Specialist → coach-1.jpg
+
+═══════════════════════════════════════════════════════════════════════════════
+
+STRATEGIC PRINCIPLES APPLIED:
+
+✓ Food content → food imagery
+✓ Fitness/training → equipment & exercise imagery
+✓ Professional evaluation → coach portraits
+✓ Hero/premium sections → gym interior
+✓ Personal transformation → fit woman imagery
+✓ All images responsive across devices
+✓ Consistent professional aesthetic maintained
+✓ Content meaning always reflected visually
+
+═══════════════════════════════════════════════════════════════════════════════
