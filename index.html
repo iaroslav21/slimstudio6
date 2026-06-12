@@ -67,8 +67,8 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;backdrop-filter:blur(12px);background:rgba(11,13,16,0.85);border-bottom:1px solid rgba(200,162,74,0.15);position:sticky;top:0;z-index:100;box-shadow:0 8px 32px rgba(0,0,0,0.1)}
+body{font-family:'Inter',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding-top:65px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;backdrop-filter:blur(12px);background:rgba(11,13,16,0.85);border-bottom:1px solid rgba(200,162,74,0.15);position:fixed;top:0;z-index:100;box-shadow:0 8px 32px rgba(0,0,0,0.1);width:100%;transition:transform 0.3s ease;transform:translateY(0)}
 .nav-logo{font-family:var(--font-heading);font-size:24px;font-weight:700;letter-spacing:2px;color:var(--text)}
 .nav-logo small{display:block;font-size:9px;letter-spacing:3px;color:var(--muted);font-weight:400;margin-top:2px}
 .nav-links{display:flex;gap:32px}
@@ -1227,10 +1227,25 @@ var progressBar=document.createElement('div');
 progressBar.style.cssText='position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#C8A24A 0%,#7EE0C3 100%);width:0;z-index:999;transition:width 0.1s ease';
 document.body.appendChild(progressBar);
 
+var lastScrollY=0;
+var navBar=document.querySelector('.nav');
 window.addEventListener('scroll',function(){
   var windowHeight=document.documentElement.scrollHeight-window.innerHeight;
   var scrolled=windowHeight>0?(window.scrollY/windowHeight)*100:0;
   progressBar.style.width=scrolled+'%';
+
+  // Navbar hide/show logic
+  var currentScrollY=window.scrollY;
+  if(currentScrollY>100){
+    if(currentScrollY>lastScrollY){
+      // Scroll DOWN - hide navbar
+      navBar.style.transform='translateY(-100%)';
+    }else{
+      // Scroll UP - show navbar
+      navBar.style.transform='translateY(0)';
+    }
+  }
+  lastScrollY=currentScrollY;
 });
 </script>
 <script src="i18n.js"></script>
